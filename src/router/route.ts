@@ -69,7 +69,55 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 		meta: {
 			isAuth: false,
 		},
-	}
+	},
+	{
+		path: '/shop',
+		name: 'staticRoutes.shop',
+		component: () => import('/@/views/shop/index.vue'),
+		meta: {
+			isAuth: false,
+		},
+	},
+	{
+		path: '/shop/product/:id',
+		name: 'staticRoutes.shopProduct',
+		component: () => import('/@/views/shop/product.vue'),
+		meta: {
+			isAuth: false,
+		},
+	},
+	{
+		path: '/shop/cart',
+		name: 'staticRoutes.shopCart',
+		component: () => import('/@/views/shop/cart.vue'),
+		meta: {
+			isAuth: true,
+		},
+	},
+	{
+		path: '/shop/checkout',
+		name: 'staticRoutes.shopCheckout',
+		component: () => import('/@/views/shop/checkout.vue'),
+		meta: {
+			isAuth: true,
+		},
+	},
+	{
+		path: '/shop/pay',
+		name: 'staticRoutes.shopPay',
+		component: () => import('/@/views/shop/pay.vue'),
+		meta: {
+			isAuth: true,
+		},
+	},
+	{
+		path: '/shop/orders',
+		name: 'staticRoutes.shopOrders',
+		component: () => import('/@/views/shop/orders.vue'),
+		meta: {
+			isAuth: true,
+		},
+	},
 ];
 
 /**
