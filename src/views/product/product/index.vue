@@ -33,7 +33,7 @@
 
 		<!-- 操作栏 -->
 		<el-card class="toolbar-card" shadow="never">
-			<el-button type="primary" @click="handleAdd">新增商品</el-button>
+			<el-button v-auth="'product:product:add'" type="primary" @click="handleAdd">新增商品</el-button>
 		</el-card>
 
 		<!-- 商品列表 -->
@@ -78,9 +78,12 @@
 				</el-table-column>
 				<el-table-column label="操作" width="250" fixed="right">
 					<template #default="{ row }">
-						<el-button link type="primary" size="small" @click="handleEdit(row)">编辑</el-button>
+						<el-button v-auth="'product:product:edit'" link type="primary" size="small" @click="handleEdit(row)">
+							编辑
+						</el-button>
 						<el-button
 							v-if="row.status === 2 || row.status === 0"
+							v-auth="'product:product:status'"
 							link
 							type="success"
 							size="small"
@@ -88,10 +91,19 @@
 						>
 							上架
 						</el-button>
-						<el-button v-if="row.status === 1" link type="warning" size="small" @click="handleOffline(row)">
+						<el-button
+							v-if="row.status === 1"
+							v-auth="'product:product:status'"
+							link
+							type="warning"
+							size="small"
+							@click="handleOffline(row)"
+						>
 							下架
 						</el-button>
-						<el-button link type="danger" size="small" @click="handleDelete(row)">删除</el-button>
+						<el-button v-auth="'product:product:del'" link type="danger" size="small" @click="handleDelete(row)">
+							删除
+						</el-button>
 					</template>
 				</el-table-column>
 			</el-table>

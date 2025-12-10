@@ -2,7 +2,7 @@
 	<div class="category-container">
 		<!-- 操作栏 -->
 		<el-card class="toolbar-card" shadow="never">
-			<el-button type="primary" @click="handleAdd(null)">新增根分类</el-button>
+			<el-button v-auth="'product:category:add'" type="primary" @click="handleAdd(null)">新增根分类</el-button>
 		</el-card>
 
 		<!-- 分类树 -->
@@ -21,9 +21,15 @@
 				<el-table-column prop="productCount" label="商品数量" width="120" />
 				<el-table-column label="操作" width="250" fixed="right">
 					<template #default="{ row }">
-						<el-button link type="primary" size="small" @click="handleAdd(row)">新增子分类</el-button>
-						<el-button link type="primary" size="small" @click="handleEdit(row)">编辑</el-button>
-						<el-button link type="danger" size="small" @click="handleDelete(row)">删除</el-button>
+						<el-button v-auth="'product:category:add'" link type="primary" size="small" @click="handleAdd(row)">
+							新增子分类
+						</el-button>
+						<el-button v-auth="'product:category:edit'" link type="primary" size="small" @click="handleEdit(row)">
+							编辑
+						</el-button>
+						<el-button v-auth="'product:category:del'" link type="danger" size="small" @click="handleDelete(row)">
+							删除
+						</el-button>
 					</template>
 				</el-table-column>
 			</el-table>

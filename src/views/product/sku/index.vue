@@ -18,7 +18,7 @@
 
 		<!-- 操作栏 -->
 		<el-card class="toolbar-card" shadow="never">
-			<el-button type="primary" @click="handleAdd">新增SKU</el-button>
+			<el-button v-auth="'product:sku:add'" type="primary" @click="handleAdd">新增SKU</el-button>
 		</el-card>
 
 		<!-- SKU列表 -->
@@ -41,8 +41,8 @@
 				<el-table-column prop="stock" label="库存" width="100" />
 				<el-table-column label="操作" width="200" fixed="right">
 					<template #default="{ row }">
-						<el-button link type="primary" size="small" @click="handleEdit(row)">编辑</el-button>
-						<el-button link type="danger" size="small" @click="handleDelete(row)">删除</el-button>
+						<el-button v-auth="'product:sku:edit'" link type="primary" size="small" @click="handleEdit(row)">编辑</el-button>
+						<el-button v-auth="'product:sku:del'" link type="danger" size="small" @click="handleDelete(row)">删除</el-button>
 					</template>
 				</el-table-column>
 			</el-table>
