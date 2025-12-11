@@ -34,10 +34,10 @@
 		<!-- 筛选栏 -->
 		<el-card class="filter-card" shadow="never">
 			<el-radio-group v-model="searchForm.commissionFilter" @change="handleSearch">
-				<el-radio-button label="">全部商品</el-radio-button>
-				<el-radio-button label="high">高佣商品（≥10%）</el-radio-button>
-				<el-radio-button label="medium">中佣商品（5%-10%）</el-radio-button>
-				<el-radio-button label="low">低佣商品（<5%）</el-radio-button>
+				<el-radio-button value="">全部商品</el-radio-button>
+				<el-radio-button value="high">高佣商品（≥10%）</el-radio-button>
+				<el-radio-button value="medium">中佣商品（5%-10%）</el-radio-button>
+				<el-radio-button value="low">低佣商品（<5%）</el-radio-button>
 			</el-radio-group>
 		</el-card>
 
@@ -143,7 +143,7 @@
 					</el-input>
 				</el-form-item>
 				<el-form-item label="二维码">
-					<div ref="qrcodeRef" style="width: 200px; height: 200px"></div>
+					<canvas ref="qrcodeRef" style="width: 200px; height: 200px"></canvas>
 				</el-form-item>
 			</el-form>
 		</el-dialog>
@@ -188,7 +188,7 @@ const currentProduct = ref<any>(null)
 // 推广链接对话框
 const linkDialogVisible = ref(false)
 const promotionLink = ref('')
-const qrcodeRef = ref<HTMLElement>()
+const qrcodeRef = ref<HTMLCanvasElement>()
 
 // 用户信息
 const userStore = useUserInfo()
@@ -248,7 +248,7 @@ const handleViewDetail = (row: any) => {
 const handleGenerateLink = async (row: any) => {
 	currentProduct.value = row
 	const distributorId = userStore.userInfo?.distributorId || 1
-	promotionLink.value = `${window.location.origin}/product/${row.id}?distributor=${distributorId}`
+	promotionLink.value = `${window.location.origin}/#/shop/product/${row.id}?distributorId=${distributorId}`
 	linkDialogVisible.value = true
 
 	// 生成二维码

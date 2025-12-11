@@ -41,8 +41,8 @@
 				</el-table-column>
 				<el-table-column label="操作" width="250" fixed="right">
 					<template #default="{ row }">
-						<el-button v-auth="'product:stock:increase'" link type="primary" size="small" @click="handleIncrease(row)">增加库存</el-button>
-						<el-button v-auth="'product:stock:decrease'" link type="warning" size="small" @click="handleDecrease(row)">减少库存</el-button>
+						<el-button v-auth="'product_stock_increase'" link type="primary" size="small" @click="handleIncrease(row)">增加库存</el-button>
+						<el-button v-auth="'product_stock_decrease'" link type="warning" size="small" @click="handleDecrease(row)">减少库存</el-button>
 						<el-button link type="info" size="small" @click="handleViewLog(row)">库存日志</el-button>
 					</template>
 				</el-table-column>
